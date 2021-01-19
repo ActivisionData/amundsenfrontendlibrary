@@ -55,6 +55,7 @@ setup(
     extras_require={
         'oidc': ['flaskoidc==0.1.1'],
         'pyarrow': ['pyarrow==2.0.0'],
+        'saml': ['Flask-SAML==0.4.3'],
     },
     python_requires=">=3.6",
     entry_points="""

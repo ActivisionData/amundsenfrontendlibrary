@@ -21,6 +21,7 @@ from amundsen_application.api.search.v0 import search_blueprint
 from amundsen_application.api.preview.dashboard.v0 import dashboard_preview_blueprint
 from amundsen_application.api.issue.issue import IssueAPI, IssuesAPI
 
+from amundsen_application.saml import FlaskSAML
 
 app_wrapper_class = Flask
 
@@ -81,5 +82,9 @@ def create_app(config_module_class: str, template_folder: str = None) -> Flask:
     init_custom_routes = app.config.get('INIT_CUSTOM_ROUTES')
     if init_custom_routes:
         init_custom_routes(app)
+
+    if isinstance(app, FlaskSAML):
+        import flask_saml
+        flask_saml.FlaskSAML(app)
 
     return app
