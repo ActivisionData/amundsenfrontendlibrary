@@ -37,7 +37,7 @@ requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'r
 with open(requirements_path) as requirements_file:
     requirements = requirements_file.readlines()
 
-__version__ = '3.1.0'
+__version__ = '3.5.0'
 
 
 setup(
@@ -54,7 +54,7 @@ setup(
     install_requires=requirements,
     extras_require={
         'oidc': ['flaskoidc==0.1.1'],
-        'pyarrow': ['pyarrow==2.0.0'],
+        'pyarrow': ['pyarrow==3.0.0'],
         'saml': ['Flask-SAML==0.4.3'],
     },
     python_requires=">=3.6",

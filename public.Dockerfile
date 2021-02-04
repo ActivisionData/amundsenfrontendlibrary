@@ -33,7 +33,7 @@ CMD [ "python3",  "amundsen_application/wsgi.py" ]
 
 # # You will need to set these environment variables in order to use the oidc image
 # # OIDC_CLIENT_SECRETS - a path to a client_secrets.json file
-# # OIDC_SECRET_KEY - A secret key from your oidc provider
+# # FLASK_OIDC_SECRET_KEY - A secret key from your oidc provider
 # # You will also need to mount a volume for the clients_secrets.json file.
 
 # FROM base as release
@@ -44,6 +44,6 @@ RUN apt-get update \
     && apt-get install -y libxml2-dev libxmlsec1-dev libxmlsec1-openssl xmlsec1
 RUN pip3 install --upgrade pip setuptools wheel
 RUN pip3 install .[saml]
-ENV FRONTEND_SVC_CONFIG_MODULE_CLASS amundsen_application.saml_config.SamlConfig
-ENV APP_WRAPPER amundsen_application.saml
-ENV APP_WRAPPER_CLASS FlaskSAML
+# ENV FRONTEND_SVC_CONFIG_MODULE_CLASS amundsen_application.saml_config.SamlConfig
+# ENV APP_WRAPPER amundsen_application.saml
+# ENV APP_WRAPPER_CLASS FlaskSAML
