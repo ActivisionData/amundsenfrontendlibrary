@@ -22,6 +22,7 @@ from amundsen_application.api.preview.dashboard.v0 import dashboard_preview_blue
 from amundsen_application.api.issue.issue import IssueAPI, IssuesAPI
 
 from amundsen_application.saml import FlaskSAML
+from flask_cors import CORS
 
 app_wrapper_class = Flask
 
@@ -43,7 +44,9 @@ def create_app(config_module_class: str, template_folder: str = None) -> Flask:
 
     tmpl_dir = template_folder if template_folder else os.path.join(PROJECT_ROOT, static_dir, 'dist/templates')
     app = app_wrapper_class(__name__, static_folder=static_dir, template_folder=tmpl_dir, **args)
-
+    
+    CORS(app)
+    
     """ Support for importing a custom config class """
     config_module_class = \
         os.getenv('FRONTEND_SVC_CONFIG_MODULE_CLASS') or config_module_class
